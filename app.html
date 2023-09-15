@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/miestilo.css">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body class="gradient-custom  animate__animated animate__fadeIn ">
+    <div class="container-fluid ">
+        <nav class="navbar navbar-light  fixed-top barra">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="imagenes/a1.png" alt="" width="32"> <span class="text-white">Escapate</span></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Escapate</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p><b><i class="bi bi-person"></i>Usuario:</b>Nelson Moncada</p>
+                    <h5>Seleccione una Opcion</h5>
+                    <button class="btn btn-primary w-100 boton my-3" onclick="opcion(this);"> <i class="bi bi-airplane"></i> Avion</button>
+                    <button class="btn btn-primary w-100 boton my-3" onclick="opcion(this);"> <i class="bi bi-cast"></i> Barco</button>
+                    <button class="btn btn-primary w-100 boton my-3" onclick="opcion(this);"> <i class="bi bi-truck-front-fill"></i> Autobus</button>
+                    <div class="row" id="misviajes">
+                        <h5 class="text-center">Record de Viaje</h5>
+                        <div class="col-lg-12">
+                            <table class="table table-striped" id="mitabla">
+                              <thead>
+                                <tr>
+                                  <th>Fecha</th>
+                                  <th>Destino</th>
+                                  <th>Medio</th>
+                                  <th>Costo</th>
+                                </tr>
+                              </thead>
+                            </table>
+                          </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+
+        <div class="row vh-100 d-flex justify-content-center align-items-center m-0">
+            <div class="col-lg-4" id="capa1">
+                <img src="imagenes/a1.png" alt="" width="100%">
+            </div>
+            <div class="col-lg-4" id="viajes"  style="display: none;">
+               <h4 class="text-center">Usted Decidio Viajar en <span id="medio"></span></h4>
+               <h4 class="text-center">Costo del Pasaje es <span id="costo">0</span></h4>
+
+                    <div class="form-group">
+                        <label for="fecha"> Fecha del viaje</label>
+                        <input type="date" id="fecha" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha"> Destino</label>
+                        <input type="text" id="destino" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary w-100 boton my-3" onclick="aceptar();"> Aceptar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        document.documentElement.style.setProperty('--animate-duration', '3s');
+
+        /*function opcion(){
+            alert("sdfdf")
+            document.getElementById("capa1").style.display = "none";
+            document.getElementById("viajes").style.display = "block";
+        }*/
+
+
+        function opcion(e){
+            limpiar();
+            op=e.textContent;
+            document.getElementById("capa1").style.display = "none";
+            document.getElementById("viajes").style.display = "block";
+            document.getElementById("medio").innerHTML=op;
+            if (op=="  Avion"){
+                document.getElementById("costo").innerHTML=2000;  
+            }
+            if (op=="  Barco"){
+                document.getElementById("costo").innerHTML=1500;  
+            }
+            if (op=="  Autobus"){
+                document.getElementById("costo").innerHTML=500;  
+            }
+       
+        }
+
+        
+    function aceptar(){
+fecha=document.getElementById("fecha").value;
+destino=document.getElementById("destino").value;
+medio=document.getElementById("medio").innerHTML;
+costo=document.getElementById("costo").innerHTML;
+document.getElementById('mitabla').insertRow(-1).innerHTML ='<td>'+fecha+'</td><td>'+destino+'</td><td>'+medio+'</td><td>'+costo+'</td>';
+
+}
+
+function limpiar(){
+    fecha=document.getElementById("fecha").value="";
+destino=document.getElementById("destino").value="";
+medio=document.getElementById("medio").innerHTML="";
+costo=document.getElementById("costo").innerHTML="";
+}
+    </script>
+</body>
+</html>
